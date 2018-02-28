@@ -6,34 +6,36 @@ import { List, ListItem } from 'react-native-elements';
 import { Button } from '../components/Button';
 
 class Foods extends Component {
-  state = { foods: [] };
+  state = { foods: [], loaded: false };
   componentWillMount() {
      axios.get('http://universityaroundtown.com/wp-json/wp/v2/sld/491')
-     .then(response => this.setState({ foods: response.data }));
+     .then(response => this.setState({ foods: response.data, loaded: true }));
    }
   onFoodPress = () => {
     this.props.navigation.navigate('FoodMap');
   }
   renderFoods() {
-    return (//(this.state.foods.title.map(food => (
+    return (Object.values(this.state.foods.protected_fields).map(food => (
       <ListItem
-        key={this.state.foods.id}
+        key={Object.values(food)[0]}
         roundAvatar
-        avatar={{ uri: 'https://nationalzoo.si.edu/sites/default/files/styles/grid_mobile/public/animals/bobcat_1.jpg?itok=XhTSWnE3' }}
-        title={Object.keys(this.state.foods.protected_fields)[0]}
-        subtitle={'Enjoy!'}
+        avatar={{ uri: Object.values(food)[3] }}
+        title={Object.values(food)[0]}
+        subtitle={Object.values(food)[2]}
         hideChevron
+        titleStyle={{ flex: 2, flexWrap: 'wrap', width: '80%', flexDirection: 'column' }}
       />
-    );//));
+    )));
   }
   render() {
-    console.log(this.state);
     return (
       <View style={{ flex: 1 }}>
         <ScrollView style={{ marginBottom: 40, marginTop: -22 }}>
-          <List>
-            {this.renderFoods()}
-          </List>
+          { this.state.loaded &&
+            <List>
+              {this.renderFoods()}
+            </List>
+          }
         </ScrollView>
         <Button onPress={() => this.onFoodPress()}>
           SHOW MAP VIEW
