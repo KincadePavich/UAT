@@ -23,7 +23,8 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+		  new MapsPackage()
       );
     }
 
@@ -32,12 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
       return "index";
     }
   };
-  protected List<ReactPackage> getPackages() {
-	 return Arrays.<ReactPackage>asList(
-			 new MainReactPackage(),
-			 new MapsPackage()
-	 );
-  }
+  
   @Override
   public ReactNativeHost getReactNativeHost() {
     return mReactNativeHost;
