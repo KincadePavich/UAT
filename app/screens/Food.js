@@ -19,7 +19,7 @@ class Foods extends Component {
       <ListItem
         key={Object.values(food)[0]}
         roundAvatar
-        avatar={{ uri: Object.values(food)[4] }}
+        avatar={{ uri: Object.values(food)[3] }}
         title={Object.values(food)[0]}
         subtitle={Object.values(food)[2]}
         hideChevron
