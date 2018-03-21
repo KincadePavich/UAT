@@ -6,9 +6,6 @@ class Settings extends Component {
   onLocationPress = () => {
     this.props.navigation.navigate('Locate');
   }
-  onCategoryPress = () => {
-    this.props.navigation.navigate('Category');
-  }
   render() {
     return (
       <ScrollView>
@@ -16,15 +13,6 @@ class Settings extends Component {
           <ListItem
             title="Location Preferences"
             onPress={() => this.onLocationPress()}
-          />
-          <ListItem
-            title="Category Preferences"
-            onPress={() => this.onCategoryPress()}
-          />
-          <ListItem
-            title="Push Notifications"
-            switchButton
-            hideChevron
           />
         </List>
       </ScrollView>

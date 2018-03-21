@@ -3,6 +3,7 @@ import MapView, { Marker } from 'react-native-maps';
 import axios from 'axios';
 import { ScrollView, View } from 'react-native';
 import { Button } from '../components/Button';
+import Ads from '../components/Ads';
 
 const styles = {
   mapStyle: {
@@ -15,37 +16,37 @@ const styles = {
 };
 
 class FoodMap extends Component {
-  state = { foods: [], loaded: false };
+  state = { items: [], loaded: false };
   componentWillMount() {
      axios.get('http://universityaroundtown.com/wp-json/wp/v2/sld/513')
-     .then(response => this.setState({ foods: response.data, loaded: true }));
+     .then(response => this.setState({ items: response.data, loaded: true }));
    }
 
-  onFoodPress = () => {
+  onPress = () => {
     this.props.navigation.navigate('Food');
   }
   createMarkers() {
     this.state.markers = [
-      Object.values(this.state.foods.protected_fields).map(food => (
+      Object.values(this.state.items.protected_fields).map(item => (
         {
           coordinate: {
-            latitude: Object.values(food)[4],
-            longitude: Object.values(food)[5],
+            latitude: Object.values(item)[4],
+            longitude: Object.values(item)[5],
           }
         }
       ))
     ];
   }
-  renderFoodsMap() {
-    return (Object.values(this.state.foods.protected_fields).map(food => (
+  renderMap() {
+    return (Object.values(this.state.items.protected_fields).map(item => (
       <Marker
-        key={Object.values(food)[0]}
+        key={Object.values(item)[0]}
         coordinate={{
-          latitude: parseFloat(Object.values(food)[4]),
-          longitude: parseFloat(Object.values(food)[5]),
+          latitude: parseFloat(Object.values(item)[4]),
+          longitude: parseFloat(Object.values(item)[5]),
         }}
-        title={Object.values(food)[0]}
-        description={Object.values(food)[2]}
+        title={Object.values(item)[0]}
+        description={Object.values(item)[2]}
       />
     )));
   }
@@ -63,11 +64,12 @@ class FoodMap extends Component {
             }}
             style={styles.mapStyle}
           >
-            {this.renderFoodsMap()}
+            {this.renderMap()}
           </MapView>
         }
         </ScrollView>
-        <Button onPress={() => this.onFoodPress()}>
+        <Ads />
+        <Button onPress={() => this.onPress()}>
           SHOW LIST VIEW
         </Button>
       </View>

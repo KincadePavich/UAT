@@ -15,7 +15,7 @@ const styles = {
   }
 };
 
-class BarsMap extends Component {
+class SpecialityMap extends Component {
   state = { items: [], loaded: false };
   componentWillMount() {
      axios.get('http://universityaroundtown.com/wp-json/wp/v2/sld/513')
@@ -23,7 +23,7 @@ class BarsMap extends Component {
    }
 
   onPress = () => {
-    this.props.navigation.navigate('Bars');
+    this.props.navigation.navigate('Speciality');
   }
   createMarkers() {
     this.state.markers = [
@@ -77,4 +77,4 @@ class BarsMap extends Component {
   }
 }
 
-export default BarsMap;
+export default SpecialityMap;

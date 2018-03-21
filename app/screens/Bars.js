@@ -1,31 +1,46 @@
 import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
+import axios from 'axios';
 import { List, ListItem } from 'react-native-elements';
-import { bars } from '../config/dataBars';
 import { Button } from '../components/Button';
+import Ads from '../components/Ads';
 
 class Bars extends Component {
-  onBarsPress = () => {
+  state = { items: [], loaded: false };
+  componentWillMount() {
+     axios.get('http://universityaroundtown.com/wp-json/wp/v2/sld/491')
+     .then(response => this.setState({ items: response.data, loaded: true }));
+   }
+  onPress = () => {
     this.props.navigation.navigate('BarsMap');
+  }
+  renderList() {
+    return (Object.values(this.state.items.protected_fields).map(item => (
+      <ListItem
+        key={Object.values(item)[0]}
+        roundAvatar
+        avatar={{ uri: Object.values(item)[3] }}
+        title={Object.values(item)[0]}
+        subtitle={Object.values(item)[2]}
+        hideChevron
+        titleStyle={{ flex: 2, flexWrap: 'wrap', width: '80%', flexDirection: 'column' }}
+      />
+    )));
   }
   render() {
     return (
       <View style={{ flex: 1 }}>
         <ScrollView style={{ marginBottom: 40, marginTop: -22 }}>
-          <List>
-            {bars.map((bar) => (
-              <ListItem
-                key={bar.name}
-                roundAvatar
-                avatar={{ uri: bar.picture }}
-                title={bar.name}
-                subtitle={bar.deal}
-                hideChevron
-              />
-            ))}
-          </List>
+          { this.state.loaded &&
+            <List>
+              {this.renderList()}
+            </List>
+          }
         </ScrollView>
-        <Button onPress={() => this.onBarsPress()}>
+        <View>
+        <Ads />
+        </View>
+        <Button onPress={() => this.onPress()}>
           SHOW MAP VIEW
         </Button>
       </View>

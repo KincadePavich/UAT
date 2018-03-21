@@ -5,14 +5,14 @@ import { List, ListItem } from 'react-native-elements';
 import { Button } from '../components/Button';
 import Ads from '../components/Ads';
 
-class Foods extends Component {
+class Coffee extends Component {
   state = { items: [], loaded: false };
   componentWillMount() {
      axios.get('http://universityaroundtown.com/wp-json/wp/v2/sld/491')
      .then(response => this.setState({ items: response.data, loaded: true }));
    }
   onPress = () => {
-    this.props.navigation.navigate('FoodMap');
+    this.props.navigation.navigate('CoffeeMap');
   }
   renderList() {
     return (Object.values(this.state.items.protected_fields).map(item => (
@@ -48,4 +48,4 @@ class Foods extends Component {
   }
 }
 
-export default Foods;
+export default Coffee;

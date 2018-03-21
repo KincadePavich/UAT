@@ -5,9 +5,14 @@ import Food from '../screens/Food';
 import FoodMap from '../screens/FoodMap';
 import Shops from '../screens/Shops';
 import ShopsMap from '../screens/ShopsMap';
+import Coffee from '../screens/Coffee';
+import CoffeeMap from '../screens/CoffeeMap';
+import Personal from '../screens/Personal';
+import PersonalMap from '../screens/PersonalMap';
+import Specialty from '../screens/Specialty';
+import SpecialtyMap from '../screens/SpecialtyMap';
 import Settings from '../screens/Settings';
 import Locate from '../screens/Locate';
-import Category from '../screens/Category';
 
 export const SettingsStack = StackNavigator({
   Settings: {
@@ -22,30 +27,23 @@ export const SettingsStack = StackNavigator({
     navigationOptions: {
       title: 'Location Preferences',
     },
-  },
-  Category: {
-    screen: Category,
-    navigationOptions: {
-      title: 'Category Preferences',
-    },
   }
 });
 
-export const ShopStack = StackNavigator({
-  Shops: {
-    screen: Shops,
+export const FoodStack = StackNavigator({
+  Food: {
+    screen: Food,
     navigationOptions: {
       header: null
     },
   },
-  ShopsMap: {
-    screen: ShopsMap,
+  FoodMap: {
+    screen: FoodMap,
     navigationOptions: {
       header: null
     },
   },
 });
-
 export const BarsStack = StackNavigator({
   Bars: {
     screen: Bars,
@@ -60,16 +58,57 @@ export const BarsStack = StackNavigator({
     },
   },
 });
-
-export const FoodStack = StackNavigator({
-  Food: {
-    screen: Food,
+export const ShopStack = StackNavigator({
+  Shops: {
+    screen: Shops,
     navigationOptions: {
       header: null
     },
   },
-  FoodMap: {
-    screen: FoodMap,
+  ShopsMap: {
+    screen: ShopsMap,
+    navigationOptions: {
+      header: null
+    },
+  },
+});
+export const CoffeeStack = StackNavigator({
+  Coffee: {
+    screen: Coffee,
+    navigationOptions: {
+      header: null
+    },
+  },
+  CoffeeMap: {
+    screen: CoffeeMap,
+    navigationOptions: {
+      header: null
+    },
+  },
+});
+export const PersonalStack = StackNavigator({
+  Personal: {
+    screen: Personal,
+    navigationOptions: {
+      header: null
+    },
+  },
+  PersonalMap: {
+    screen: PersonalMap,
+    navigationOptions: {
+      header: null
+    },
+  },
+});
+export const SpecialtyStack = StackNavigator({
+  Specialty: {
+    screen: Specialty,
+    navigationOptions: {
+      header: null
+    },
+  },
+  SpecialtyMap: {
+    screen: SpecialtyMap,
     navigationOptions: {
       header: null
     },
@@ -95,16 +134,39 @@ export const Tabs = TabNavigator({
       tabBarLabel: 'Shops',
     },
   },
+  Coffee: {
+    screen: CoffeeStack,
+    navigationOptions: {
+      tabBarLabel: 'Coffee',
+    },
+  },
+  PersonalCare: {
+    screen: PersonalStack,
+    navigationOptions: {
+      tabBarLabel: 'Personal Care',
+    },
+  },
+  Speciality: {
+    screen: SpecialtyStack,
+    navigationOptions: {
+      tabBarLabel: 'Speciality',
+    },
+  },
   Settings: {
     screen: SettingsStack,
     navigationOptions: {
-      tabBarLabel: 'Options',
+      tabBarLabel: 'Settings',
     },
   },
 }, {
   tabBarOptions: {
     style: {
       backgroundColor: '#002469',
+    },
+    scrollEnabled: true,
+    tabStyle: {
+      width: 150,
+      height: 50,
     }
   }
 });

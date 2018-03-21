@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Image, Text } from 'react-native';
 import { Root } from './config/router';
 
+console.disableYellowBox = true;
+
 class App extends Component {
   handleSettingsPress = () => {
     this.props.navigation.navigate('Settings');
@@ -20,7 +22,7 @@ class App extends Component {
 const styles = {
   logoStyle: {
     alignSelf: 'center',
-    height: 40,
+    height: 30,
     margin: 10,
     resizeMode: 'contain'
   }
