@@ -8,7 +8,7 @@ import Ads from '../components/Ads';
 class Personal extends Component {
   state = { items: [], loaded: false };
   componentWillMount() {
-     axios.get('http://universityaroundtown.com/wp-json/wp/v2/sld/491')
+     axios.get(global.personal)
      .then(response => this.setState({ items: response.data, loaded: true }));
    }
   onPress = () => {

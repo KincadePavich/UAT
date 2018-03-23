@@ -8,11 +8,11 @@ import Ads from '../components/Ads';
 class Speciality extends Component {
   state = { items: [], loaded: false };
   componentWillMount() {
-     axios.get('http://universityaroundtown.com/wp-json/wp/v2/sld/491')
+     axios.get(global.specialty)
      .then(response => this.setState({ items: response.data, loaded: true }));
    }
   onPress = () => {
-    this.props.navigation.navigate('SpecialityMap');
+    this.props.navigation.navigate('SpecialtyMap');
   }
   renderList() {
     return (Object.values(this.state.items.protected_fields).map(item => (

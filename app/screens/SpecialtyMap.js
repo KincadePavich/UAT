@@ -18,7 +18,7 @@ const styles = {
 class SpecialityMap extends Component {
   state = { items: [], loaded: false };
   componentWillMount() {
-     axios.get('http://universityaroundtown.com/wp-json/wp/v2/sld/513')
+     axios.get(global.specialty)
      .then(response => this.setState({ items: response.data, loaded: true }));
    }
 

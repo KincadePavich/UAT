@@ -6,7 +6,7 @@ import axios from 'axios';
 class Ads extends Component {
   state = { ads: [], adURLs: [] };
   componentWillMount() {
-     axios.get('http://universityaroundtown.com/wp-json/wp/v2/ads?_embed')
+     axios.get(global.ads)
      .then(response => this.setState({ ads: response.data }));
    }
   getAds() {
