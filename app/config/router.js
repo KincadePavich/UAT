@@ -13,6 +13,7 @@ import Specialty from '../screens/Specialty';
 import SpecialtyMap from '../screens/SpecialtyMap';
 import Settings from '../screens/Settings';
 import Locate from '../screens/Locate';
+import Details from '../screens/Details';
 
 export const SettingsStack = StackNavigator({
   Settings: {
@@ -27,7 +28,7 @@ export const SettingsStack = StackNavigator({
     navigationOptions: {
       title: 'Location Preferences',
     },
-  }
+  },
 });
 
 export const FoodStack = StackNavigator({
@@ -43,6 +44,12 @@ export const FoodStack = StackNavigator({
       header: null
     },
   },
+  FoodDetails: {
+    screen: Details,
+    navigationOptions: {
+      title: 'Back to Food Deals',
+    }
+  }
 });
 export const BarsStack = StackNavigator({
   Bars: {
@@ -57,6 +64,12 @@ export const BarsStack = StackNavigator({
       header: null
     },
   },
+  BarDetails: {
+    screen: Details,
+    navigationOptions: {
+      title: 'Back to Bar and Night Life Deals',
+    }
+  }
 });
 export const ShopStack = StackNavigator({
   Shops: {
@@ -71,6 +84,12 @@ export const ShopStack = StackNavigator({
       header: null
     },
   },
+  ShopDetails: {
+    screen: Details,
+    navigationOptions: {
+      title: 'Back to Shopping Deals',
+    }
+  }
 });
 export const CoffeeStack = StackNavigator({
   Coffee: {
@@ -85,6 +104,12 @@ export const CoffeeStack = StackNavigator({
       header: null
     },
   },
+  CoffeeDetails: {
+    screen: Details,
+    navigationOptions: {
+      title: 'Back to Coffee and Tea Deals',
+    }
+  }
 });
 export const PersonalStack = StackNavigator({
   Personal: {
@@ -99,6 +124,12 @@ export const PersonalStack = StackNavigator({
       header: null
     },
   },
+  PersonalDetails: {
+    screen: Details,
+    navigationOptions: {
+      title: 'Back to Salon and Personal Care Deals',
+    }
+  }
 });
 export const SpecialtyStack = StackNavigator({
   Specialty: {
@@ -113,6 +144,12 @@ export const SpecialtyStack = StackNavigator({
       header: null
     },
   },
+  SpecialtyDetails: {
+    screen: Details,
+    navigationOptions: {
+      title: 'Back to Speciality Store Deals',
+    }
+  }
 });
 
 export const Tabs = TabNavigator({

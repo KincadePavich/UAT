@@ -1,5 +1,6 @@
-global.school = 'Montana State University';
-if (global.school === 'Montana State University') {
+global.school = 'MONTANA STATE UNIVERSITY';
+if (global.school === 'MONTANA STATE UNIVERSITY') {
+  global.site = 'http://msubobcats.com/index.aspx';
   global.food = 'http://universityaroundtown.com/wp-json/wp/v2/sld/491';
   global.bars = 'http://universityaroundtown.com/wp-json/wp/v2/sld/504';
   global.shops = 'http://universityaroundtown.com/wp-json/wp/v2/sld/503';

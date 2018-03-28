@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, Linking, TouchableOpacity } from 'react-native';
 import { Root } from './config/router';
 import './global.js';
 
@@ -10,7 +10,11 @@ class App extends Component {
     return (
       <View style={{ flex: 1 }}>
         <Image style={styles.logoStyle} source={require('./media/UAT.png')} />
-        <Text style={{ alignSelf: 'center', fontSize: 18, color: '#000', paddingBottom: 15 }}>{global.school}</Text>
+        <TouchableOpacity onPress={() => Linking.openURL(global.site)}>
+          <Text style={styles.headingStyle}>
+            {global.school}
+          </Text>
+          </TouchableOpacity>
         <Root />
       </View>
     );
@@ -23,6 +27,13 @@ const styles = {
     height: 30,
     margin: 10,
     resizeMode: 'contain'
+  },
+  headingStyle: {
+    alignSelf: 'center',
+    fontSize: 18,
+    color: '#000',
+    paddingBottom: 15,
+    textDecorationLine: 'underline',
   }
 };
 

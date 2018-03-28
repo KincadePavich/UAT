@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { List, ListItem } from 'react-native-elements';
 import { Button } from '../components/Button';
@@ -14,17 +14,21 @@ class Coffee extends Component {
   onPress = () => {
     this.props.navigation.navigate('CoffeeMap');
   }
+  onPressItem = (item) => {
+    this.props.navigation.navigate('CoffeeDetails', { ...item });
+  }
   renderList() {
     return (Object.values(this.state.items.protected_fields).map(item => (
-      <ListItem
-        key={Object.values(item)[0]}
-        roundAvatar
-        avatar={{ uri: Object.values(item)[3] }}
-        title={Object.values(item)[0]}
-        subtitle={Object.values(item)[2]}
-        hideChevron
-        titleStyle={{ flex: 2, flexWrap: 'wrap', width: '80%', flexDirection: 'column' }}
-      />
+      <TouchableOpacity onPress={() => this.onPressItem(item)}>
+        <ListItem
+          key={Object.values(item)[0]}
+          roundAvatar
+          avatar={{ uri: Object.values(item)[3] }}
+          title={Object.values(item)[0]}
+          subtitle={'10% Off Any Purchase'}
+          titleStyle={{ flex: 2, flexWrap: 'wrap', width: '80%', flexDirection: 'column' }}
+        />
+      </TouchableOpacity>
     )));
   }
   render() {
