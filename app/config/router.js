@@ -12,25 +12,16 @@ import PersonalMap from '../screens/PersonalMap';
 import Specialty from '../screens/Specialty';
 import SpecialtyMap from '../screens/SpecialtyMap';
 import Settings from '../screens/Settings';
-import Locate from '../screens/Locate';
 import Details from '../screens/Details';
 
 export const SettingsStack = StackNavigator({
   Settings: {
     screen: Settings,
     navigationOptions: {
-      title: 'Settings',
-      headerTitleStyle: { alignSelf: 'center', textAlign: 'center' }
-    },
-  },
-  Locate: {
-    screen: Locate,
-    navigationOptions: {
-      title: 'Location Preferences',
+      header: null
     },
   },
 });
-
 export const FoodStack = StackNavigator({
   Food: {
     screen: Food,
@@ -192,19 +183,19 @@ export const Tabs = TabNavigator({
   Settings: {
     screen: SettingsStack,
     navigationOptions: {
-      tabBarLabel: 'Settings',
+      tabBarLabel: 'Location',
     },
   },
 }, {
   tabBarOptions: {
-    style: {
-      backgroundColor: '#002469',
-    },
     scrollEnabled: true,
     tabStyle: {
       width: 150,
       height: 50,
-    }
+    },
+    style: {
+      backgroundColor: '#002469',
+    },
   }
 });
 
@@ -214,17 +205,5 @@ export const Root = StackNavigator({
     navigationOptions: {
       header: null
     },
-  },
-  Settings: {
-    screen: SettingsStack,
-  },
-}, {
-  tabBarOptions: {
-    activeTintColor: '#002469',
-    activeBackgroundColor: '#002469',
-    inactiveBackgroundColor: '#002469',
-    style: {
-      backgroundColor: '#002469'
-    }
   },
 });

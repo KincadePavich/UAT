@@ -21,8 +21,7 @@ class FoodMap extends Component {
   componentWillMount() {
      axios.get(global.food)
      .then(response => this.setState({ items: response.data, loaded: true }));
-   }
-
+  }
   onPress = () => {
     this.props.navigation.navigate('Food');
   }

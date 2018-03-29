@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ScrollView, View } from 'react-native';
 import { Button } from '../components/Button';
 import Ads from '../components/Ads';
+import { Spinner } from '../components/Spinner';
 
 const styles = {
   mapStyle: {
