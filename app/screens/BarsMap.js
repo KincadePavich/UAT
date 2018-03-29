@@ -53,8 +53,13 @@ class BarsMap extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+      { !this.state.loaded &&
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+          <Spinner size="large" />
+        </View>
+      }
+      { this.state.loaded &&
         <ScrollView style={{ marginBottom: 40, marginTop: -22 }}>
-        { this.state.loaded &&
           <MapView
             initialRegion={{
               latitude: 45.6770,
@@ -66,8 +71,8 @@ class BarsMap extends Component {
           >
             {this.renderMap()}
           </MapView>
-        }
         </ScrollView>
+      }
         <Ads />
         <Button onPress={() => this.onPress()}>
           SHOW LIST VIEW

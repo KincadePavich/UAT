@@ -4,6 +4,7 @@ import axios from 'axios';
 import { List, ListItem } from 'react-native-elements';
 import { Button } from '../components/Button';
 import Ads from '../components/Ads';
+import { Spinner } from '../components/Spinner';
 
 class Specialty extends Component {
   state = { items: [], loaded: false };
@@ -34,13 +35,18 @@ class Specialty extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <ScrollView style={{ marginBottom: 40, marginTop: -22 }}>
-          { this.state.loaded &&
+        { !this.state.loaded &&
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+            <Spinner size="large" />
+          </View>
+        }
+        { this.state.loaded &&
+          <ScrollView style={{ marginBottom: 40, marginTop: -22 }}>
             <List>
               {this.renderList()}
             </List>
-          }
-        </ScrollView>
+          </ScrollView>
+        }
         <View>
         <Ads />
         </View>

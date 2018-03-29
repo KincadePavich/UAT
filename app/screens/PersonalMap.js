@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ScrollView, View } from 'react-native';
 import { Button } from '../components/Button';
 import Ads from '../components/Ads';
+import { Spinner } from '../components/Spinner';
 
 const styles = {
   mapStyle: {
@@ -53,8 +54,13 @@ class PersonalMap extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+      { !this.state.loaded &&
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+          <Spinner size="large" />
+        </View>
+      }
+      { this.state.loaded &&
         <ScrollView style={{ marginBottom: 40, marginTop: -22 }}>
-        { this.state.loaded &&
           <MapView
             initialRegion={{
               latitude: 45.6770,
@@ -66,8 +72,8 @@ class PersonalMap extends Component {
           >
             {this.renderMap()}
           </MapView>
-        }
         </ScrollView>
+      }
         <Ads />
         <Button onPress={() => this.onPress()}>
           SHOW LIST VIEW
